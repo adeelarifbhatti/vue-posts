@@ -1,6 +1,6 @@
 version: "2.0"
 services:
- node-adeel-vuesecond:
+ vue-posts:
   build:
    context: .
    dockerfile: ./Dockerfile
