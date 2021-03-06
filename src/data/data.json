@@ -1,0 +1,22 @@
+{
+    "posts":[
+    {
+         "title": "test1",
+     "body": "lorem" ,
+     "id":1,
+     "tags" :
+         [
+         "Code","css", "html"
+        ]
+     },
+     { 
+         "title":"test2",
+      "body": "body2",
+      "id":2,
+      "tags" :
+         [
+        "Code","css", "html"
+         ]
+     }
+   ]
+}

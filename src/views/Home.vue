@@ -13,10 +13,26 @@ export default {
   components: { PostList },
   name: 'Home',
   setup() {
-    const posts = ref([
-     { title: 'test1', body: 'lorem' ,id:1},
-      {title:'test2', body:'body2',id:2}
-    ]);
+    const posts = ref([]);
+    const error = ref(null)
+    const url = process.env.VUE_APP_URL;
+    const load  = async () => {
+      try {
+        const data = await fetch(url);
+
+        if(!data.ok) {
+          throw Error('no data available');
+        }
+
+        posts.value = await data.json();
+        console.log(data);
+      }
+      catch(err) {
+        error.value= err.message;
+        console.log(error.value);
+      }
+    }
+    load();
     return {posts}
   }
 }
