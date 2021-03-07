@@ -6,6 +6,10 @@ const getPosts = () => {
     const url = process.env.VUE_APP_URL;
     const load  = async () => {
         try {
+            await new Promise(resolve => {
+                setTimeout(resolve,2000);
+                console.log("delay 2000");
+            });
             const data = await fetch(url);
             if(!data.ok) {
             throw Error('no data available');
