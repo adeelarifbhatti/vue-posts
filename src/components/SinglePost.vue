@@ -6,6 +6,11 @@
     <p>
         {{snippet}}
     </p>
+    <div>
+        <span v-for="tag in post.tags" :key="tag">
+            #{{tag}}
+        </span>
+    </div>
 </div>
   
 </template>
