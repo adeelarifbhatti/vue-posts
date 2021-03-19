@@ -5,7 +5,14 @@
       <label class="form__label">Details:</label>
       <textarea class="form__input" v-model="body" requried></textarea>
       <label> Tags (hit enter to add a tag) </label>
-      <input v-model="tag" type="text">
+      <input 
+       v-model="tag" 
+       type="text"
+       @keydown.enter.prevent="tagSubmission"
+      >
+      <div v-for="tag in tags" :key="tag"> 
+        #{{ tag }}
+      </div>
       <button class="btn"> Add Project </button>
   </form>
 
@@ -21,7 +28,15 @@ export default {
     const tag = ref('')
     const tags = ref([])
 
-  return {title, body, tag}
+    const tagSubmission = () => {
+      if(!tags.value.includes(tag.value)){
+        tag.value = tag.value.replace(/\s/,'') // removes the whitespaces
+        tags.value.push(tag.value);
+      }
+      tag.value='';
+    }
+
+  return {title, body, tag, tags, tagSubmission}
   }
 
 }
