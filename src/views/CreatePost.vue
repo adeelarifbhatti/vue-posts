@@ -35,8 +35,23 @@ export default {
       }
       tag.value='';
     }
+    const handleSubmit = async () => {
+      let post = {
+        title: title.value,
+        body: body.value,
+        tags: tags.value
 
-  return {title, body, tag, tags, tagSubmission}
+      }
+      await fetch(process.env.VUE_APP_URL, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(post)
+        });
+        console.log(post);
+
+      }
+
+  return {title, body, tag, tags, tagSubmission, handleSubmit}
   }
 
 }
