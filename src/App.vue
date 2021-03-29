@@ -1,18 +1,17 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> 
-
+    <NavBar />
   </div>
   <router-view/>
 </template>
 
 <script>
-export default {
-  setup() {
-    console.log("setup");
-  }
+import NavBar from './components/NavBar.vue'
 
+export default {
+  components: { NavBar }
 }
+
 </script>
 
 <style lang="scss">
