@@ -1,10 +1,7 @@
 <template>
-  <header>
-      <h1> The Blog </h1>
-  </header>
-  <nav>
-      <router-link :to="{name : 'Home'}"> Home </router-link>
-      <router-link :to="{name : 'Create'}"> Create Post </router-link>
+  <nav class="navigation">
+      <router-link :to="{name : 'Home'}" class="nav-text"> Home  </router-link>
+      <router-link :to="{name : 'Create'}" class="nav-text"> Create Post </router-link>
   </nav>
 </template>
 
