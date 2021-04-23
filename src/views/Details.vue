@@ -2,9 +2,9 @@
  <div v-if="error">
       {{error}}
     </div>
-    <div v-if="post">
+    <div class="home" v-if="post">
         ID is {{post.id}}
-        <p class="p-body"> Body is > {{post.body}}</p>
+        <p> Body is > {{post.body}}</p>
 
         <h6>{{post.tags}}</h6>
     </div>
@@ -30,8 +30,6 @@ export default {
 </script>
 
 <style>
-.p-body {
-    background-color: rgb(193, 203, 212);
-}
+
 
 </style>

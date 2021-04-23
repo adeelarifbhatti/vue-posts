@@ -22,6 +22,7 @@
 <script>
 import {ref} from 'vue'
 import {useRouter} from 'vue-router'
+import { projectPost} from '../firebase/config'
 export default {
   setup() {
     const title = ref('')
@@ -39,19 +40,16 @@ export default {
       tag.value='';
     }
     const handleSubmit = async () => {
-      let post = {
+      const post = {
         title: title.value,
         body: body.value,
         tags: tags.value
 
       }
-      await fetch(process.env.VUE_APP_URL, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(post)
-        });
+      const res = await projectPost.collection('posts').add(post);
+
         router.push({name: 'Home'});
-        console.log(post);
+        console.log(res);
 
       }
 

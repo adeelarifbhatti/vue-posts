@@ -1,4 +1,5 @@
 import {ref} from 'vue'
+import { projectPost} from '../firebase/config'
 
 const getPost = (id) => {
     const post = ref(null);
@@ -6,18 +7,12 @@ const getPost = (id) => {
     const url = process.env.VUE_APP_URL;
     const load  = async () => {
         try {
-            await new Promise(resolve => {
-                setTimeout(resolve,2000);
-                console.log("delay 2000");
-            });
-
-            console.log("URL by ADEEL",url+'/'+ id);
-            const data = await fetch(url+'/'+ id);
-            if(!data.ok) {
-            throw Error('no data available');
+            let res = await projectPost.collection('posts').doc(id).get();
+            if(!res.exists) {
+                throw Error ('This post does not exist');
             }
-            post.value = await data.json();
-            console.log(data);
+            post.value = {...res.data(), id: res.id};
+            console.log(post.value)
         }
         catch(err) {
             error.value= err.message;
