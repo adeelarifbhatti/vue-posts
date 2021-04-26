@@ -21,7 +21,15 @@ const getPosts = () => {
                return{ ...doc.data(),id: doc.id}
            // console.log(doc.data());
            
-        })
+        });
+        //realtime updating the webpage
+        projectPost.collection('posts')
+        .onSnapshot((snap) => {
+            posts.value = snap.docs.map(doc => {
+                return {...doc.data(), id: doc.id }
+            });    
+            
+        });
         }
         catch(err) {
             error.value= err.message;
