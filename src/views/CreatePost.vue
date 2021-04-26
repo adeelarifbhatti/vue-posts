@@ -22,7 +22,7 @@
 <script>
 import {ref} from 'vue'
 import {useRouter} from 'vue-router'
-import { projectPost} from '../firebase/config'
+import { projectPost, firebaseTimeStamp} from '../firebase/config'
 export default {
   setup() {
     const title = ref('')
@@ -43,7 +43,8 @@ export default {
       const post = {
         title: title.value,
         body: body.value,
-        tags: tags.value
+        tags: tags.value,
+        createTimeStamp: firebaseTimeStamp()
 
       }
       const res = await projectPost.collection('posts').add(post);

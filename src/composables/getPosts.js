@@ -11,7 +11,9 @@ const getPosts = () => {
                 setTimeout(resolve,2000);
                 console.log("delay 2000");
             });
-           const res = await projectPost.collection('posts').get();
+           const res = await projectPost.collection('posts')
+           .orderBy('createTimeStamp', 'desc')
+           .get();
            //console.log(res.docs)
            posts.value = res.docs.map(doc => {
                // id is not returned as it is not stored in the object rather on the object
