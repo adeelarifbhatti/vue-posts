@@ -1,19 +1,11 @@
-# vue-first
+# Simple Vue-app with json-server (no backend)
 
-## Project setup
-```
-yarn install
-```
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+The frontend app has no real backend, it just queries the json-server (src/data/data.json), src/composables folder has the getposts.js and getpost.js.
 
-### Compiles and minifies for production
-```
-yarn build
-```
+Content of .env file is following, this is the json-server (our backend :D)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+process.env.VUE_APP_URL = 'http://localhost:3000/posts'
+
+To run the app, just clone it and execute following command 
+#### docker-compose up
