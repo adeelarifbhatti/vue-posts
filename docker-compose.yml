@@ -10,6 +10,6 @@ services:
   -   ./package.json:/usr/src/app/package.json
   -   .env:/usr/src/app/.env
   ports:
-  -  "80:8080"
+  -  "8080:8080"
   -  "3000:3000"
 
